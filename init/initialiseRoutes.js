@@ -22,22 +22,32 @@ internals.getUser = function (request, reply) {
   reply(filtered);
 }
 
-module.exports = [{
-  method: 'GET',
-  path: '/users',
-  config: {
-    validate: {
-      query: {
-        name: Joi.string()
-      }
-    },
-    handler: internals.getUsers
+module.exports = [
+  {
+    method: 'GET',
+    path: '/',
+    config: {
+      handler: require('../pseudo/root.js')
+    }
+  },
+  {
+    method: 'GET',
+    path: '/users',
+    config: {
+      validate: {
+        query: {
+          name: Joi.string()
+        }
+      },
+      handler: internals.getUsers
+    }
+  },
+  {
+    method: 'GET',
+    path: '/users/{id}',
+    handler: internals.getUser
   }
-}, {
-  method: 'GET',
-  path: '/users/{id}',
-  handler: internals.getUser
-}];
+];
 
 internals.users = [
   {
