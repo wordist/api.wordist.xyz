@@ -26,4 +26,12 @@ describe('Basic Routes', function() {
       });
   });
 
+  it('GET /junk', (done) => {
+      server.inject('/junk', (res) => {
+          expect(res.statusCode).to.equal(404);
+          expect(res.result).to.equal({statusCode: 404, error: 'Not Found'});
+          done();
+      })
+  });
+
 });
