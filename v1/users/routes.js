@@ -55,5 +55,19 @@ module.exports = [
     method: 'GET',
     path: '/v1/users/{id}',
     handler: internals.getUser
+  },
+  {
+    method: 'POST',
+    path: '/v1/users',
+    handler: require('./post.js'),
+    config: {
+      validate: {
+        payload: {
+          username: Joi.string().alphanum().min(3).max(30).required(),
+          password: Joi.string().required(),
+          email: Joi.string().email().required()
+        }
+      }
+    }
   }
 ];
