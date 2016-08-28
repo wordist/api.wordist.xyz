@@ -1,2 +1,3 @@
 # api.wordist.xyz
-# npm start
+
+npm start

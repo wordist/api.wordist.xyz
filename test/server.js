@@ -12,12 +12,6 @@ const should = require('should');
 const server = require('../server');
 
 describe('Example Server', () => {
-    it('GET /docs', (done) => {
-        server.inject('/docs', (res) => {
-            expect(res.statusCode).to.equal(200);
-            done();
-        })
-    });
 
     it('GET /junk', (done) => {
         server.inject('/junk', (res) => {
